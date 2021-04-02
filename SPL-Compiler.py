@@ -317,11 +317,16 @@ def lexer():
                         state = 1
                         notDone = True
                 elif state == 17: #0 State (ACCEPT)
-                    tokens.append(["T"+str(tokSize), "NUMBER", tok])  #ACCEPT INT
-                    tokSize+=1
-                    tok = ""
-                    state = 1
-                    notDone = True
+                    if re.match("[0-9]", let): #REJECT
+                        tok = tok+let
+                        print(LexError(tok, lineCount, "zero", let))
+                        exit(0)
+                    else:
+                        tokens.append(["T"+str(tokSize), "NUMBER", tok])  #ACCEPT INT
+                        tokSize+=1
+                        tok = ""
+                        state = 1
+                        notDone = True
                 elif state == 18: #- State (REJECT)
                     if re.match("[1-9]", let):
                         tok = tok+let
@@ -888,8 +893,8 @@ def lexer():
         elif state in [46]:
             tokens.append(["T"+str(tokSize), "STRING", tok])  #ACCEPT STRING
         elif state in [15]:
-        	print(LexError(tok, lineCount, "incompString", "a"))
-        	exit(0)
+            print(LexError(tok, lineCount, "incompString", "a"))
+            exit(0)
         else:
             tokens.append(["T"+str(tokSize), "ID", tok])  #ACCEPT ID
         tokSize+=1
@@ -903,7 +908,9 @@ def LexError(t, lin, s, l):
     elif not re.match("[a-z0-9\"\-\(\)\{\};,<>=]", l):
         return str("Lexical Error on Line "+str(lin)+": "+t+" (Invalid Character: "+str(l)+")")
     elif s == "incompString":
-    	return str("Lexical Error on Line "+str(lin)+": "+t+" (Incomplete String!)")
+        return str("Lexical Error on Line "+str(lin)+": "+t+" (Incomplete String!)")
+    elif s == "zero":
+        return str("Lexical Error on Line "+str(lin)+": "+t+" (Malformed Number!)")
     else:
         return str("Lexical Error on Line "+str(lin)+": "+t)
 
