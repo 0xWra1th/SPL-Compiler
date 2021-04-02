@@ -8,17 +8,16 @@ def main():
     tokens = lexer()
     for x,tok in enumerate(tokens):
         if x == 0:
-            print(tok)
+            print(str(tok))
         else:
-            print("          V\n"+str(tok))
+            print("--->"+str(tok))
     exit(0)
 
 def lexer():
     tokens = []
     tokSize = 0
     state = 1
-    #file = open("../uploads/practical_1.txt")
-    file = open("test.txt")
+    file = open("../uploads/practical_1.txt")
     tok = ""
     lineCount = 0
     strLen = 0
@@ -115,7 +114,8 @@ def lexer():
                         state = 29 #ID State
                     else:
                         tok = tok+let
-                        LexError(tok, lineCount, "", let);
+                        print(LexError(tok, lineCount, "", let))
+                        exit(0)
                 elif state == 2: #ID State (ACCEPT)
                     if re.match("[a-z0-9]", let):
                         tok = tok+let
@@ -304,7 +304,8 @@ def lexer():
                     else:
                         if re.match("[a-z0-9]", let):
                             tok = tok+let
-                            LexError(tok, lineCount, "strLen", let);
+                            print(LexError(tok, lineCount, "strLen", let))
+                            exit(0)
                 elif state == 16: #INT State (ACCEPT)
                     if re.match("[0-9]", let):
                         tok = tok+let
@@ -327,21 +328,22 @@ def lexer():
                         state = 16 #INT ACCEPT State
                     else:
                         tok = tok+let
-                        LexError(tok, lineCount, "", let);
+                        print(LexError(tok, lineCount, "", let))
+                        exit(0)
                 elif state == 19:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Assignment SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
                     notDone = True
                 elif state == 20:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Comparison SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
                     notDone = True
                 elif state == 21:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Comparison SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
@@ -364,43 +366,43 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Math KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
                         notDone = True
                 elif state == 24:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Grouping SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
                     notDone = True
                 elif state == 25:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Grouping SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
                     notDone = True
                 elif state == 26:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Grouping SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
                     notDone = True
                 elif state == 27:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Grouping SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
                     notDone = True
                 elif state == 28:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Grouping SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
                     notDone = True
                 elif state == 29:
-                    tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
+                    tokens.append(["T"+str(tokSize), "Grouping SYMBOL", tok])  #ACCEPT SYMBOL
                     tokSize+=1
                     tok = ""
                     state = 1
@@ -423,7 +425,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Comparison KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -446,7 +448,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Boolean KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -456,7 +458,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Boolean KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -518,7 +520,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Control KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -666,7 +668,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "I/O KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -676,7 +678,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Control KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -686,7 +688,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Boolean KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -709,7 +711,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Math KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -732,7 +734,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Procedure KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -768,7 +770,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "I/O KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -791,7 +793,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Control KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -827,7 +829,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Control KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -837,7 +839,7 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Control KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
@@ -860,23 +862,23 @@ def lexer():
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Special KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
                         notDone = True
-                elif state == 69: #halt State (ACCEPT)
+                elif state == 69: #sub State (ACCEPT)
                     if re.match("[a-z0-9]", let):
                         tok = tok+let
                         state = 2 #ID State
                     else:
-                        tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
+                        tokens.append(["T"+str(tokSize), "Math KEYWORD", tok])  #ACCEPT KEYWORD
                         tokSize+=1
                         tok = ""
                         state = 1
                         notDone = True
 
-    if state != 1 and state != 15 and state != 18:
+    if state != 1 and state != 18:
         if state in [19,20,21,24,25,26,27,28,29]:
             tokens.append(["T"+str(tokSize), "SYMBOL", tok])  #ACCEPT SYMBOL
         elif state in [16,17]:
@@ -885,20 +887,46 @@ def lexer():
             tokens.append(["T"+str(tokSize), "KEYWORD", tok])  #ACCEPT KEYWORD
         elif state in [46]:
             tokens.append(["T"+str(tokSize), "STRING", tok])  #ACCEPT STRING
+        elif state in [15]:
+        	print(LexError(tok, lineCount, "incompString", "a"))
+        	exit(0)
         else:
             tokens.append(["T"+str(tokSize), "ID", tok])  #ACCEPT ID
         tokSize+=1
+        file.close()
     return tokens
 
 
 def LexError(t, lin, s, l):
     if s == "strLen":
-        print("Lexical Error on Line "+str(lin)+": "+t+" (String too long!)")
+        return str("Lexical Error on Line "+str(lin)+": "+t+" (String too long!)")
     elif not re.match("[a-z0-9\"\-\(\)\{\};,<>=]", l):
-        print("Lexical Error on Line "+str(lin)+": "+t+" (Invalid Character: "+str(l)+")")
+        return str("Lexical Error on Line "+str(lin)+": "+t+" (Invalid Character: "+str(l)+")")
+    elif s == "incompString":
+    	return str("Lexical Error on Line "+str(lin)+": "+t+" (Incomplete String!)")
     else:
-        print("Lexical Error on Line "+str(lin)+": "+t)
-    exit(0)
+        return str("Lexical Error on Line "+str(lin)+": "+t)
 
 if __name__ == "__main__":
     main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
