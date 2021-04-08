@@ -1,6 +1,8 @@
 #SPL-Compiler
 #Date: 01/04/2021
 
+#TODO: Fix case if special char in string
+
 #IMPORTS
 import re
 
@@ -17,7 +19,7 @@ def lexer():
     tokens = []
     tokSize = 0
     state = 1
-    file = open("../uploads/practical_1.txt")
+    file = open("test.txt")
     tok = ""
     lineCount = 0
     strLen = 0
@@ -297,7 +299,7 @@ def lexer():
                     if re.match("\"", let):
                         tok = tok+let
                         state = 46 #String ACCEPT State
-                    elif re.match("[a-z0-9]", let) and strLen < 8:
+                    elif re.match("[a-z0-9 ]", let) and strLen < 8:
                         strLen+=1
                         tok = tok+let
                         state = 15 #ID State
@@ -305,6 +307,10 @@ def lexer():
                         if re.match("[a-z0-9]", let):
                             tok = tok+let
                             print(LexError(tok, lineCount, "strLen", let))
+                            exit(0)
+                        else:
+                            tok = tok+let
+                            print(LexError(tok, lineCount, "strError", let))
                             exit(0)
                 elif state == 16: #INT State (ACCEPT)
                     if re.match("[0-9]", let):
@@ -905,6 +911,8 @@ def lexer():
 def LexError(t, lin, s, l):
     if s == "strLen":
         return str("Lexical Error on Line "+str(lin)+": "+t+" (String too long!)")
+    elif s == "strError":
+        return str("Lexical Error on Line "+str(lin)+": "+t+" (Invalid character in string!)")
     elif not re.match("[a-z0-9\"\-\(\)\{\};,<>=]", l):
         return str("Lexical Error on Line "+str(lin)+": "+t+" (Invalid Character: "+str(l)+")")
     elif s == "incompString":
