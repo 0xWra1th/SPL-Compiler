@@ -1,1 +1,3 @@
-SPL Compiler
+# SPL Compiler
+###Lexer (Complete)
+###Parser (WIP)
