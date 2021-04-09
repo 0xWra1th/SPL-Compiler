@@ -1,3 +1,4 @@
-# SPL Compiler
-###Lexer (Complete)
-###Parser (WIP)
+## SPL Compiler
+#### 1) Lexer (Complete)
+  * Mark = 100%
+#### 2) Parser (WIP)
