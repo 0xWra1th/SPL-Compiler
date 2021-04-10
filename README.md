@@ -1,5 +1,5 @@
 # SPL Compiler
-### TODO:
+### <b>TODO:</b>
    * Port all code to Java.
    * Start creating Parser...
 ### 1) Lexer (Complete)
