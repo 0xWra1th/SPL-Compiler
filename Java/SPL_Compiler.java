@@ -1330,13 +1330,17 @@ public class SPL_Compiler{
 		            System.exit(0);
 		        }
 	        	tokSize++;
-	        }else if(!tok.equals("\n") && !tok.equals(" ") && !tok.equals("")){
+	        }else if(!tok.equals("\n") && !tok.equals(" ") && !tok.equals("") && !tok.equals("-")){
 	            newItem = new ArrayList<String>();
 				newItem.add("T"+tokSize);
 				newItem.add("ID");
 				newItem.add(tok);
 				tokens.add(newItem);
 				tokSize++;
+	        }else if(tok.equals("-")){
+	        	tok = tok+"-";
+                System.out.println(LexError(tok, lineCount, "","-"));
+                System.exit(0);
 	        }
 		}catch(FileNotFoundException e){
 			e.printStackTrace();
