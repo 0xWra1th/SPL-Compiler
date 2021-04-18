@@ -2,6 +2,7 @@
 ### 1) Lexer (Complete)
   * Mark = 100%
 ### 2) Parser (Current Stage)
+  * Parsing Method: SLR
 ### 3) Type Checker
 ### 4) Intermediate Code Generator
 ### 5) Machine Code Generator
