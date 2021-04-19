@@ -572,68 +572,13 @@
 		<!--The list of transitions.-->
 		<transition>
 			<from>0</from>
-			<to>67</to>
-			<read>eq</read>
+			<to>17</to>
+			<read>CALL</read>
 		</transition>
 		<transition>
 			<from>68</from>
-			<to>71</to>
-			<read>BOOL</read>
-		</transition>
-		<transition>
-			<from>46</from>
-			<to>47</to>
-			<read>,</read>
-		</transition>
-		<transition>
-			<from>128</from>
-			<to>129</to>
-			<read>{</read>
-		</transition>
-		<transition>
-			<from>71</from>
-			<to>72</to>
-			<read>,</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>39</to>
-			<read>mult</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>38</to>
-			<read>sub</read>
-		</transition>
-		<transition>
-			<from>63</from>
-			<to>64</to>
-			<read>{</read>
-		</transition>
-		<transition>
-			<from>87</from>
-			<to>88</to>
-			<read>)</read>
-		</transition>
-		<transition>
-			<from>130</from>
-			<to>131</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>10</from>
-			<to>11</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>58</from>
-			<to>59</to>
-			<read>then</read>
-		</transition>
-		<transition>
-			<from>9</from>
-			<to>10</to>
-			<read>PROG</read>
+			<to>70</to>
+			<read>VAR</read>
 		</transition>
 		<transition>
 			<from>69</from>
@@ -641,14 +586,49 @@
 			<read>,</read>
 		</transition>
 		<transition>
-			<from>8</from>
-			<to>9</to>
-			<read>{</read>
+			<from>97</from>
+			<to>98</to>
+			<read>BOOL</read>
 		</transition>
 		<transition>
-			<from>47</from>
-			<to>48</to>
-			<read>NUMEXPR</read>
+			<from>91</from>
+			<to>100</to>
+			<read>(</read>
+		</transition>
+		<transition>
+			<from>119</from>
+			<to>120</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
+			<from>126</from>
+			<to>127</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>9</from>
+			<to>10</to>
+			<read>PROG</read>
+		</transition>
+		<transition>
+			<from>82</from>
+			<to>84</to>
+			<read>&lt;</read>
+		</transition>
+		<transition>
+			<from>89</from>
+			<to>94</to>
+			<read>BOOL</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>20</to>
+			<read>COND_LOOP</read>
+		</transition>
+		<transition>
+			<from>112</from>
+			<to>113</to>
+			<read>=</read>
 		</transition>
 		<transition>
 			<from>13</from>
@@ -656,19 +636,34 @@
 			<read>CODE</read>
 		</transition>
 		<transition>
-			<from>31</from>
-			<to>34</to>
-			<read>NUMEXPR</read>
+			<from>0</from>
+			<to>18</to>
+			<read>ASSIGN</read>
 		</transition>
 		<transition>
 			<from>0</from>
-			<to>89</to>
-			<read>not</read>
+			<to>81</to>
+			<read>(</read>
 		</transition>
 		<transition>
 			<from>0</from>
-			<to>15</to>
-			<read>halt</read>
+			<to>16</to>
+			<read>IO</read>
+		</transition>
+		<transition>
+			<from>108</from>
+			<to>109</to>
+			<read>CODE</read>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>4</to>
+			<read>PROC_DEFS</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>23</to>
+			<read>UserDefinedName</read>
 		</transition>
 		<transition>
 			<from>31</from>
@@ -677,13 +672,73 @@
 		</transition>
 		<transition>
 			<from>0</from>
-			<to>36</to>
-			<read>CALC</read>
+			<to>19</to>
+			<read>COND_BRANCH</read>
 		</transition>
 		<transition>
-			<from>111</from>
-			<to>112</to>
-			<read>VAR</read>
+			<from>71</from>
+			<to>72</to>
+			<read>,</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>12</to>
+			<read>INSTR</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>90</to>
+			<read>and</read>
+		</transition>
+		<transition>
+			<from>103</from>
+			<to>104</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>102</from>
+			<to>103</to>
+			<read>BOOL</read>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>3</to>
+			<read>;</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>91</to>
+			<read>or</read>
+		</transition>
+		<transition>
+			<from>31</from>
+			<to>34</to>
+			<read>NUMEXPR</read>
+		</transition>
+		<transition>
+			<from>124</from>
+			<to>125</to>
+			<read>,</read>
+		</transition>
+		<transition>
+			<from>109</from>
+			<to>110</to>
+			<read>}</read>
+		</transition>
+		<transition>
+			<from>70</from>
+			<to>75</to>
+			<read>,</read>
+		</transition>
+		<transition>
+			<from>57</from>
+			<to>58</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>92</to>
+			<read>while</read>
 		</transition>
 		<transition>
 			<from>52</from>
@@ -691,19 +746,19 @@
 			<read>NUMEXPR</read>
 		</transition>
 		<transition>
+			<from>68</from>
+			<to>71</to>
+			<read>BOOL</read>
+		</transition>
+		<transition>
+			<from>81</from>
+			<to>82</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
 			<from>0</from>
-			<to>17</to>
-			<read>CALL</read>
-		</transition>
-		<transition>
-			<from>73</from>
-			<to>74</to>
-			<read>)</read>
-		</transition>
-		<transition>
-			<from>5</from>
-			<to>6</to>
-			<read>PROC_DEFS</read>
+			<to>55</to>
+			<read>if</read>
 		</transition>
 		<transition>
 			<from>68</from>
@@ -711,24 +766,99 @@
 			<read>NUMEXPR</read>
 		</transition>
 		<transition>
-			<from>82</from>
-			<to>84</to>
-			<read>&lt;</read>
+			<from>0</from>
+			<to>35</to>
+			<read>Number</read>
 		</transition>
 		<transition>
-			<from>125</from>
-			<to>126</to>
-			<read>1</read>
+			<from>0</from>
+			<to>7</to>
+			<read>proc</read>
 		</transition>
 		<transition>
-			<from>127</from>
-			<to>128</to>
+			<from>56</from>
+			<to>57</to>
+			<read>BOOL</read>
+		</transition>
+		<transition>
+			<from>73</from>
+			<to>74</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>59</from>
+			<to>60</to>
+			<read>{</read>
+		</transition>
+		<transition>
+			<from>7</from>
+			<to>8</to>
+			<read>UserDefinedName</read>
+		</transition>
+		<transition>
+			<from>39</from>
+			<to>50</to>
+			<read>(</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>37</to>
+			<read>add</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>39</to>
+			<read>mult</read>
+		</transition>
+		<transition>
+			<from>41</from>
+			<to>42</to>
+			<read>,</read>
+		</transition>
+		<transition>
+			<from>28</from>
+			<to>29</to>
 			<read>)</read>
 		</transition>
 		<transition>
 			<from>0</from>
-			<to>12</to>
-			<read>INSTR</read>
+			<to>38</to>
+			<read>sub</read>
+		</transition>
+		<transition>
+			<from>95</from>
+			<to>96</to>
+			<read>BOOL</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>89</to>
+			<read>not</read>
+		</transition>
+		<transition>
+			<from>130</from>
+			<to>131</to>
+			<read>}</read>
+		</transition>
+		<transition>
+			<from>47</from>
+			<to>48</to>
+			<read>NUMEXPR</read>
+		</transition>
+		<transition>
+			<from>10</from>
+			<to>11</to>
+			<read>}</read>
+		</transition>
+		<transition>
+			<from>111</from>
+			<to>112</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>1</to>
+			<read>PROG</read>
 		</transition>
 		<transition>
 			<from>82</from>
@@ -741,114 +871,24 @@
 			<read>NUMEXPR</read>
 		</transition>
 		<transition>
-			<from>0</from>
-			<to>16</to>
-			<read>IO</read>
-		</transition>
-		<transition>
-			<from>50</from>
-			<to>51</to>
-			<read>NUMEXPR</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>81</to>
-			<read>(</read>
-		</transition>
-		<transition>
-			<from>112</from>
-			<to>113</to>
-			<read>=</read>
-		</transition>
-		<transition>
-			<from>45</from>
-			<to>46</to>
-			<read>NUMEXPR</read>
-		</transition>
-		<transition>
-			<from>92</from>
-			<to>105</to>
-			<read>(</read>
-		</transition>
-		<transition>
-			<from>24</from>
-			<to>25</to>
-			<read>VAR</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>7</to>
-			<read>proc</read>
-		</transition>
-		<transition>
-			<from>61</from>
-			<to>62</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>81</from>
-			<to>82</to>
-			<read>VAR</read>
-		</transition>
-		<transition>
-			<from>3</from>
-			<to>4</to>
-			<read>PROC_DEFS</read>
-		</transition>
-		<transition>
-			<from>27</from>
-			<to>28</to>
-			<read>VAR</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>5</to>
-			<read>PROC</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>21</to>
-			<read>input</read>
-		</transition>
-		<transition>
-			<from>113</from>
-			<to>114</to>
-			<read>0</read>
-		</transition>
-		<transition>
-			<from>53</from>
-			<to>54</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>28</from>
-			<to>29</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>60</from>
-			<to>61</to>
-			<read>CODE</read>
-		</transition>
-		<transition>
-			<from>105</from>
-			<to>106</to>
+			<from>72</from>
+			<to>73</to>
 			<read>BOOL</read>
 		</transition>
 		<transition>
-			<from>119</from>
-			<to>120</to>
-			<read>VAR</read>
+			<from>38</from>
+			<to>45</to>
+			<read>(</read>
 		</transition>
 		<transition>
-			<from>21</from>
-			<to>24</to>
-			<read>{</read>
+			<from>76</from>
+			<to>77</to>
+			<read>)</read>
 		</transition>
 		<transition>
-			<from>0</from>
-			<to>22</to>
-			<read>output</read>
+			<from>37</from>
+			<to>40</to>
+			<read>(</read>
 		</transition>
 		<transition>
 			<from>116</from>
@@ -856,54 +896,14 @@
 			<read>&lt;</read>
 		</transition>
 		<transition>
-			<from>89</from>
-			<to>94</to>
-			<read>BOOL</read>
-		</transition>
-		<transition>
-			<from>109</from>
-			<to>110</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>72</from>
-			<to>73</to>
-			<read>BOOL</read>
-		</transition>
-		<transition>
-			<from>65</from>
-			<to>66</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>2</from>
-			<to>3</to>
-			<read>;</read>
-		</transition>
-		<transition>
-			<from>48</from>
-			<to>49</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>20</to>
-			<read>COND_LOOP</read>
-		</transition>
-		<transition>
-			<from>106</from>
-			<to>107</to>
-			<read>)</read>
-		</transition>
-		<transition>
-			<from>55</from>
-			<to>56</to>
+			<from>122</from>
+			<to>123</to>
 			<read>(</read>
 		</transition>
 		<transition>
-			<from>0</from>
-			<to>55</to>
-			<read>if</read>
+			<from>46</from>
+			<to>47</to>
+			<read>,</read>
 		</transition>
 		<transition>
 			<from>84</from>
@@ -911,44 +911,34 @@
 			<read>VAR</read>
 		</transition>
 		<transition>
-			<from>120</from>
-			<to>121</to>
-			<read>=</read>
+			<from>0</from>
+			<to>67</to>
+			<read>eq</read>
 		</transition>
 		<transition>
-			<from>59</from>
-			<to>60</to>
+			<from>125</from>
+			<to>126</to>
+			<read>1</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>30</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
+			<from>121</from>
+			<to>122</to>
+			<read>add</read>
+		</transition>
+		<transition>
+			<from>107</from>
+			<to>108</to>
 			<read>{</read>
 		</transition>
 		<transition>
-			<from>79</from>
-			<to>80</to>
+			<from>98</from>
+			<to>99</to>
 			<read>)</read>
-		</transition>
-		<transition>
-			<from>30</from>
-			<to>31</to>
-			<read>=</read>
-		</transition>
-		<transition>
-			<from>22</from>
-			<to>27</to>
-			<read>{</read>
-		</transition>
-		<transition>
-			<from>43</from>
-			<to>44</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>70</from>
-			<to>75</to>
-			<read>,</read>
-		</transition>
-		<transition>
-			<from>97</from>
-			<to>98</to>
-			<read>BOOL</read>
 		</transition>
 		<transition>
 			<from>51</from>
@@ -957,13 +947,8 @@
 		</transition>
 		<transition>
 			<from>0</from>
-			<to>23</to>
-			<read>UserDefinedName</read>
-		</transition>
-		<transition>
-			<from>129</from>
-			<to>130</to>
-			<read>CODE</read>
+			<to>93</to>
+			<read>for</read>
 		</transition>
 		<transition>
 			<from>118</from>
@@ -971,34 +956,9 @@
 			<read>;</read>
 		</transition>
 		<transition>
-			<from>124</from>
-			<to>125</to>
-			<read>,</read>
-		</transition>
-		<transition>
-			<from>25</from>
-			<to>26</to>
-			<read>}</read>
-		</transition>
-		<transition>
-			<from>108</from>
-			<to>109</to>
-			<read>CODE</read>
-		</transition>
-		<transition>
 			<from>0</from>
-			<to>37</to>
-			<read>add</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>19</to>
-			<read>COND_BRANCH</read>
-		</transition>
-		<transition>
-			<from>78</from>
-			<to>79</to>
-			<read>NUMEXPR</read>
+			<to>15</to>
+			<read>halt</read>
 		</transition>
 		<transition>
 			<from>75</from>
@@ -1006,14 +966,9 @@
 			<read>VAR</read>
 		</transition>
 		<transition>
-			<from>67</from>
-			<to>68</to>
-			<read>(</read>
-		</transition>
-		<transition>
-			<from>96</from>
-			<to>97</to>
-			<read>,</read>
+			<from>0</from>
+			<to>22</to>
+			<read>output</read>
 		</transition>
 		<transition>
 			<from>100</from>
@@ -1021,169 +976,29 @@
 			<read>BOOL</read>
 		</transition>
 		<transition>
-			<from>117</from>
-			<to>118</to>
+			<from>27</from>
+			<to>28</to>
 			<read>VAR</read>
 		</transition>
 		<transition>
-			<from>68</from>
-			<to>70</to>
-			<read>VAR</read>
-		</transition>
-		<transition>
-			<from>103</from>
-			<to>104</to>
-			<read>)</read>
-		</transition>
-		<transition>
-			<from>115</from>
-			<to>116</to>
-			<read>VAR</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>92</to>
-			<read>while</read>
-		</transition>
-		<transition>
-			<from>41</from>
-			<to>42</to>
-			<read>,</read>
-		</transition>
-		<transition>
-			<from>90</from>
-			<to>95</to>
-			<read>(</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>30</to>
-			<read>VAR</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>35</to>
-			<read>Number</read>
-		</transition>
-		<transition>
-			<from>12</from>
-			<to>13</to>
-			<read>;</read>
-		</transition>
-		<transition>
-			<from>83</from>
-			<to>87</to>
-			<read>VAR</read>
-		</transition>
-		<transition>
-			<from>39</from>
-			<to>50</to>
-			<read>{</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>1</to>
-			<read>PROG</read>
-		</transition>
-		<transition>
-			<from>7</from>
-			<to>8</to>
-			<read>UserDefinedName</read>
-		</transition>
-		<transition>
-			<from>62</from>
-			<to>63</to>
-			<read>else</read>
-		</transition>
-		<transition>
-			<from>121</from>
-			<to>122</to>
-			<read>add</read>
-		</transition>
-		<transition>
-			<from>123</from>
-			<to>124</to>
-			<read>VAR</read>
-		</transition>
-		<transition>
-			<from>64</from>
-			<to>65</to>
-			<read>CODE</read>
-		</transition>
-		<transition>
-			<from>56</from>
-			<to>57</to>
-			<read>BOOL</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>90</to>
-			<read>and</read>
-		</transition>
-		<transition>
-			<from>98</from>
-			<to>99</to>
-			<read>)</read>
-		</transition>
-		<transition>
-			<from>122</from>
-			<to>123</to>
-			<read>(</read>
-		</transition>
-		<transition>
-			<from>38</from>
-			<to>45</to>
-			<read>{</read>
-		</transition>
-		<transition>
-			<from>102</from>
-			<to>103</to>
-			<read>BOOL</read>
-		</transition>
-		<transition>
-			<from>76</from>
-			<to>77</to>
-			<read>)</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>91</to>
-			<read>or</read>
-		</transition>
-		<transition>
-			<from>0</from>
-			<to>93</to>
-			<read>for</read>
-		</transition>
-		<transition>
-			<from>95</from>
-			<to>96</to>
-			<read>BOOL</read>
-		</transition>
-		<transition>
-			<from>91</from>
-			<to>100</to>
-			<read>(</read>
-		</transition>
-		<transition>
-			<from>101</from>
-			<to>102</to>
-			<read>,</read>
-		</transition>
-		<transition>
-			<from>42</from>
-			<to>43</to>
+			<from>45</from>
+			<to>46</to>
 			<read>NUMEXPR</read>
 		</transition>
 		<transition>
-			<from>37</from>
-			<to>40</to>
-			<read>{</read>
+			<from>61</from>
+			<to>62</to>
+			<read>}</read>
 		</transition>
 		<transition>
-			<from>57</from>
-			<to>58</to>
-			<read>)</read>
+			<from>113</from>
+			<to>114</to>
+			<read>0</read>
+		</transition>
+		<transition>
+			<from>63</from>
+			<to>64</to>
+			<read>{</read>
 		</transition>
 		<transition>
 			<from>93</from>
@@ -1191,29 +1006,94 @@
 			<read>(</read>
 		</transition>
 		<transition>
-			<from>126</from>
-			<to>127</to>
+			<from>22</from>
+			<to>27</to>
+			<read>(</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>36</to>
+			<read>CALC</read>
+		</transition>
+		<transition>
+			<from>12</from>
+			<to>13</to>
+			<read>;</read>
+		</transition>
+		<transition>
+			<from>87</from>
+			<to>88</to>
 			<read>)</read>
 		</transition>
 		<transition>
-			<from>0</from>
-			<to>18</to>
-			<read>ASSIGN</read>
+			<from>90</from>
+			<to>95</to>
+			<read>(</read>
 		</transition>
 		<transition>
-			<from>0</from>
-			<to>2</to>
+			<from>60</from>
+			<to>61</to>
 			<read>CODE</read>
 		</transition>
 		<transition>
-			<from>85</from>
-			<to>86</to>
+			<from>83</from>
+			<to>87</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
+			<from>25</from>
+			<to>26</to>
 			<read>)</read>
 		</transition>
 		<transition>
-			<from>31</from>
-			<to>32</to>
-			<read>String</read>
+			<from>128</from>
+			<to>129</to>
+			<read>{</read>
+		</transition>
+		<transition>
+			<from>42</from>
+			<to>43</to>
+			<read>NUMEXPR</read>
+		</transition>
+		<transition>
+			<from>48</from>
+			<to>49</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>101</from>
+			<to>102</to>
+			<read>,</read>
+		</transition>
+		<transition>
+			<from>21</from>
+			<to>24</to>
+			<read>(</read>
+		</transition>
+		<transition>
+			<from>62</from>
+			<to>63</to>
+			<read>else</read>
+		</transition>
+		<transition>
+			<from>53</from>
+			<to>54</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>123</from>
+			<to>124</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
+			<from>55</from>
+			<to>56</to>
+			<read>(</read>
+		</transition>
+		<transition>
+			<from>120</from>
+			<to>121</to>
+			<read>=</read>
 		</transition>
 		<transition>
 			<from>114</from>
@@ -1221,9 +1101,129 @@
 			<read>;</read>
 		</transition>
 		<transition>
-			<from>107</from>
-			<to>108</to>
+			<from>8</from>
+			<to>9</to>
 			<read>{</read>
+		</transition>
+		<transition>
+			<from>31</from>
+			<to>32</to>
+			<read>String</read>
+		</transition>
+		<transition>
+			<from>64</from>
+			<to>65</to>
+			<read>CODE</read>
+		</transition>
+		<transition>
+			<from>106</from>
+			<to>107</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>92</from>
+			<to>105</to>
+			<read>(</read>
+		</transition>
+		<transition>
+			<from>127</from>
+			<to>128</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>129</from>
+			<to>130</to>
+			<read>CODE</read>
+		</transition>
+		<transition>
+			<from>58</from>
+			<to>59</to>
+			<read>then</read>
+		</transition>
+		<transition>
+			<from>30</from>
+			<to>31</to>
+			<read>=</read>
+		</transition>
+		<transition>
+			<from>79</from>
+			<to>80</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>85</from>
+			<to>86</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>117</from>
+			<to>118</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>21</to>
+			<read>input</read>
+		</transition>
+		<transition>
+			<from>67</from>
+			<to>68</to>
+			<read>(</read>
+		</transition>
+		<transition>
+			<from>105</from>
+			<to>106</to>
+			<read>BOOL</read>
+		</transition>
+		<transition>
+			<from>115</from>
+			<to>116</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
+			<from>96</from>
+			<to>97</to>
+			<read>,</read>
+		</transition>
+		<transition>
+			<from>78</from>
+			<to>79</to>
+			<read>NUMEXPR</read>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>6</to>
+			<read>PROC_DEFS</read>
+		</transition>
+		<transition>
+			<from>43</from>
+			<to>44</to>
+			<read>)</read>
+		</transition>
+		<transition>
+			<from>50</from>
+			<to>51</to>
+			<read>NUMEXPR</read>
+		</transition>
+		<transition>
+			<from>24</from>
+			<to>25</to>
+			<read>VAR</read>
+		</transition>
+		<transition>
+			<from>65</from>
+			<to>66</to>
+			<read>}</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>5</to>
+			<read>PROC</read>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>2</to>
+			<read>CODE</read>
 		</transition>
 	</automaton>
 </structure>
