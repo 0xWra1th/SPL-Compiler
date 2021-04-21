@@ -23,7 +23,7 @@ public class SPL_Compiler{
 		Parser par = new Parser();
 		Tree t = par.runParser(tokens);
 
-		System.out.println("\n-----------------------------\n|  Welcome To The Compiler  |\n-----------------------------\n\n");
+		//System.out.println("\n-----------------------------\n|  Welcome To The Compiler  |\n-----------------------------\n\n");
 		printTree(t.getHead(), 0);
 	}
 

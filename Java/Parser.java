@@ -2,6 +2,7 @@ import java.util.*;
 //import java.io.*;
 //import java.util.regex.*;
 
+import javax.print.attribute.standard.PrinterMakeAndModel;
 import javax.swing.text.DefaultStyledDocument.ElementSpec;
 
 public class Parser {
@@ -18,7 +19,7 @@ public class Parser {
 		this.list = list;
         shift();
         tok++;
-        System.out.println("SHIFT");
+        //System.out.println("SHIFT");
 
         
         for(int m=0;m<list.size()+5;m++){
@@ -26,24 +27,24 @@ public class Parser {
             String type = checkAll();
 
             //OUTPUT STACK
-            System.out.print("STACK: ");
+            /*System.out.print("STACK: ");
             for(int i=stack.size();i>0;i--){
                 System.out.print(""+stack.get(stack.size()-i).getHead().getInfo());
-            }
-            System.out.println("");
+            }*/
+            //System.out.println("");
 
             if(type.equals("")){
                 shift();
-                System.out.println("SHIFT");
+                //System.out.println("SHIFT");
                 tok++;
             }else{
-                System.out.println("-- REDUCE("+type+","+ID+") --");
+                //System.out.println("-- REDUCE("+type+","+ID+") --");
                 ID = reduce(type, ID);
                 m--;
             }
         }
         t = prog();
-        System.out.println(" --- PARSER FINISHED --- ");
+        //System.out.println(" --- PARSER FINISHED --- ");
 		return t;
 	}
 
@@ -72,19 +73,25 @@ public class Parser {
                 }else if(stack.get(i).getHead().getInfo().equals("PROC_DEFS")){
                     kids[i] = stack.get(i).getHead();
                 }else{
-                    System.out.print("Parsing Error: ");
-                    for(int x=i;x<stack.size();x++){
-                        if(stack.get(x).getHead().getInfo().equals("CODE") || stack.get(x).getHead().getInfo().equals("PROC_DEFS")){
-                            break;
-                        }
-                        System.out.print(stack.get(x).getHead().getInfo());
-                    }
+                    System.out.print("Error encountered during parsing, aborting.");
                     System.exit(0);
                 }
             }
         }
         head.setChildren(kids);
         return res;
+    }
+
+    private void printNode(Node n){
+        if(n != null){
+			Node[] kids = n.getChildren();
+            if(kids[0] == null){
+			    System.out.print(" "+n.getInfo());
+            }
+			for(int i=0;i<kids.length;i++){
+				printNode(kids[i]);
+			}
+		}
     }
 
     private int reduce(String type, int ID){
@@ -94,285 +101,285 @@ public class Parser {
             VAR.setChildren(kids);
 
             Tree newTree = new Tree(VAR);
-            System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
             stack.remove(stack.size()-1);
             stack.add(newTree);
         }else if(type.equals("IO")){
             Node IO = new Node(""+ID, "IO");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-4).getHead().getInfo()+" , "+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-4).getHead().getInfo()+" , "+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-4).getHead(), stack.get(stack.size()-2).getHead()};
             IO.setChildren(kids);
 
             Tree newTree = new Tree(IO);
             for(int i=1;i<=4;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("INSTR")){
             Node INSTR = new Node(""+ID, "INSTR");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-1).getHead()};
             INSTR.setChildren(kids);
 
             Tree newTree = new Tree(INSTR);
             for(int i=1;i<=1;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("PROG1")){
             Node PROG = new Node(""+ID, "PROG");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-1).getHead()};
             PROG.setChildren(kids);
 
             Tree newTree = new Tree(PROG);
             for(int i=1;i<=1;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("PROG2")){
             Node PROG = new Node(""+ID, "PROG");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-1).getHead()};
             PROG.setChildren(kids);
 
             Tree newTree = new Tree(PROG);
             for(int i=1;i<=1;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("PROC_DEFS1")){
             Node PROC_DEFS = new Node(""+ID, "PROC_DEFS");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-1).getHead()};
             PROC_DEFS.setChildren(kids);
 
             Tree newTree = new Tree(PROC_DEFS);
             for(int i=1;i<=1;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("PROC_DEFS2")){
             Node PROC_DEFS = new Node(""+ID, "PROC_DEFS");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-2).getHead().getInfo()+","+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-2).getHead().getInfo()+","+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-2).getHead(),stack.get(stack.size()-1).getHead()};
             PROC_DEFS.setChildren(kids);
 
             Tree newTree = new Tree(PROC_DEFS);
             for(int i=1;i<=2;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("CODE1")){
             Node CODE = new Node(""+ID, "CODE");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-1).getHead()};
             CODE.setChildren(kids);
 
             Tree newTree = new Tree(CODE);
             for(int i=1;i<=1;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("CODE2")){
             Node CODE = new Node(""+ID, "CODE");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-3).getHead().getInfo()+","+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-3).getHead().getInfo()+","+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-3).getHead(),stack.get(stack.size()-1).getHead()};
             CODE.setChildren(kids);
 
             Tree newTree = new Tree(CODE);
             for(int i=1;i<=3;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("CALL")){
             Node CALL = new Node(""+ID, "CALL");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-1).getHead()};
             CALL.setChildren(kids);
 
             Tree newTree = new Tree(CALL);
             for(int i=1;i<=1;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("NUMEXPR")){
             Node NUMEXPR = new Node(""+ID, "NUMEXPR");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-1).getHead()};
             NUMEXPR.setChildren(kids);
 
             Tree newTree = new Tree(NUMEXPR);
             for(int i=1;i<=1;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("BOOL1")){
             Node BOOL = new Node(""+ID, "BOOL");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-2).getHead().getInfo()+","+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-2).getHead().getInfo()+","+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-2).getHead(),stack.get(stack.size()-1).getHead()};
             BOOL.setChildren(kids);
 
             Tree newTree = new Tree(BOOL);
             for(int i=1;i<=2;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("BOOL2")){
             Node BOOL = new Node(""+ID, "BOOL");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-3).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-3).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-4).getHead(),stack.get(stack.size()-3).getHead(),stack.get(stack.size()-2).getHead()};
             BOOL.setChildren(kids);
 
             Tree newTree = new Tree(BOOL);
             for(int i=1;i<=5;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("BOOL3")){
             Node BOOL = new Node(""+ID, "BOOL");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-6).getHead(),stack.get(stack.size()-4).getHead(),stack.get(stack.size()-2).getHead()};
             BOOL.setChildren(kids);
 
             Tree newTree = new Tree(BOOL);
             for(int i=1;i<=6;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("ASSIGN")){
             Node ASSIGN = new Node(""+ID, "ASSIGN");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-3).getHead().getInfo()+","+stack.get(stack.size()-1).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-3).getHead().getInfo()+","+stack.get(stack.size()-1).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-3).getHead(),stack.get(stack.size()-1).getHead()};
             ASSIGN.setChildren(kids);
 
             Tree newTree = new Tree(ASSIGN);
             for(int i=1;i<=3;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("CALC")){
             Node CALC = new Node(""+ID, "CALC");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-6).getHead(),stack.get(stack.size()-4).getHead(),stack.get(stack.size()-2).getHead()};
             CALC.setChildren(kids);
 
             Tree newTree = new Tree(CALC);
             for(int i=1;i<=6;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("PROC")){
             Node PROC = new Node(""+ID, "PROC");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-5).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-5).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-5).getHead(),stack.get(stack.size()-4).getHead(),stack.get(stack.size()-2).getHead()};
             PROC.setChildren(kids);
 
             Tree newTree = new Tree(PROC);
             for(int i=1;i<=5;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("COND_LOOP1")){
             Node COND_LOOP = new Node(""+ID, "COND_LOOP");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-7).getHead().getInfo()+","+stack.get(stack.size()-5).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-7).getHead().getInfo()+","+stack.get(stack.size()-5).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-7).getHead(),stack.get(stack.size()-5).getHead(),stack.get(stack.size()-2).getHead()};
             COND_LOOP.setChildren(kids);
 
             Tree newTree = new Tree(COND_LOOP);
             for(int i=1;i<=7;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("COND_LOOP1")){
             Node COND_LOOP = new Node(""+ID, "COND_LOOP");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-7).getHead().getInfo()+","+stack.get(stack.size()-5).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-7).getHead().getInfo()+","+stack.get(stack.size()-5).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-7).getHead(),stack.get(stack.size()-5).getHead(),stack.get(stack.size()-2).getHead()};
             COND_LOOP.setChildren(kids);
 
             Tree newTree = new Tree(COND_LOOP);
             for(int i=1;i<=7;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("COND_LOOP2")){
             Node COND_LOOP = new Node(""+ID, "COND_LOOP");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-22).getHead().getInfo()+","+stack.get(stack.size()-20).getHead().getInfo()+","+stack.get(stack.size()-16).getHead().getInfo()+","+stack.get(stack.size()-14).getHead().getInfo()+","+stack.get(stack.size()-12).getHead().getInfo()+","+stack.get(stack.size()-8).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-22).getHead().getInfo()+","+stack.get(stack.size()-20).getHead().getInfo()+","+stack.get(stack.size()-16).getHead().getInfo()+","+stack.get(stack.size()-14).getHead().getInfo()+","+stack.get(stack.size()-12).getHead().getInfo()+","+stack.get(stack.size()-8).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-22).getHead(),stack.get(stack.size()-20).getHead(),stack.get(stack.size()-16).getHead(),stack.get(stack.size()-14).getHead(),stack.get(stack.size()-12).getHead(),stack.get(stack.size()-8).getHead(),stack.get(stack.size()-2).getHead()};
             COND_LOOP.setChildren(kids);
 
             Tree newTree = new Tree(COND_LOOP);
             for(int i=1;i<=22;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("COND_BRANCH1")){
             Node COND_BRANCH = new Node(""+ID, "COND_BRANCH");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-8).getHead().getInfo()+","+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-8).getHead().getInfo()+","+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-8).getHead(),stack.get(stack.size()-6).getHead(),stack.get(stack.size()-4).getHead(),stack.get(stack.size()-2).getHead()};
             COND_BRANCH.setChildren(kids);
 
             Tree newTree = new Tree(COND_BRANCH);
             for(int i=1;i<=8;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("COND_BRANCH2")){
             Node COND_BRANCH = new Node(""+ID, "COND_BRANCH");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-12).getHead().getInfo()+","+stack.get(stack.size()-10).getHead().getInfo()+","+stack.get(stack.size()-8).getHead().getInfo()+","+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-12).getHead().getInfo()+","+stack.get(stack.size()-10).getHead().getInfo()+","+stack.get(stack.size()-8).getHead().getInfo()+","+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
             Node[] kids = {stack.get(stack.size()-12).getHead(),stack.get(stack.size()-10).getHead(),stack.get(stack.size()-8).getHead(),stack.get(stack.size()-6).getHead(),stack.get(stack.size()-4).getHead(),stack.get(stack.size()-2).getHead()};
             COND_BRANCH.setChildren(kids);
 
             Tree newTree = new Tree(COND_BRANCH);
             for(int i=1;i<=12;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("INTEGRATE_CODE")){
             Node CODE = new Node(""+ID, "CODE");
-            System.out.println("CHILDREN: "+stack.get(stack.size()-3).getHead().getChildren().length+","+stack.get(stack.size()-1).getHead().getChildren().length);
+            //System.out.println("CHILDREN: "+stack.get(stack.size()-3).getHead().getChildren().length+","+stack.get(stack.size()-1).getHead().getChildren().length);
             Node[] kids = new Node[stack.get(stack.size()-3).getHead().getChildren().length+stack.get(stack.size()-1).getHead().getChildren().length];
             for(int x=0;x<stack.get(stack.size()-3).getHead().getChildren().length;x++){
                 kids[x] = stack.get(stack.size()-3).getHead().getChildren()[x];
@@ -384,13 +391,13 @@ public class Parser {
 
             Tree newTree = new Tree(CODE);
             for(int i=1;i<=3;i++){
-                System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
             stack.add(newTree);
         }else if(type.equals("REMOVE_SEMI")){
-            System.out.println("REMOVED: "+stack.get(stack.size()-2).getHead().getInfo());
+            //System.out.println("REMOVED: "+stack.get(stack.size()-2).getHead().getInfo());
             stack.remove(stack.size()-2);
         }
         return ID;
@@ -472,7 +479,7 @@ public class Parser {
         if(stack.size() >= 3){
             shifts = stack.get(stack.size()-3).getHead().getInfo()+shifts;
             if(shifts.equals("CODE;CODE")){
-                System.out.println("********************************************************************************");
+                //System.out.println("********************************************************************************");
                 type = "INTEGRATE_CODE";
             }else if(shifts.equals("INSTR;CODE")){
                 type = "CODE2";
