@@ -27,11 +27,11 @@ public class Parser {
             String type = checkAll();
 
             //OUTPUT STACK
-            /*System.out.print("STACK: ");
-            for(int i=stack.size();i>0;i--){
+            //System.out.print(" ================================================================= STACK: ");
+            /*for(int i=stack.size();i>0;i--){
                 System.out.print(""+stack.get(stack.size()-i).getHead().getInfo());
-            }*/
-            //System.out.println("");
+            }
+            System.out.println("");*/
 
             if(type.equals("")){
                 shift();
@@ -65,6 +65,12 @@ public class Parser {
         Tree res = new Tree(new Node("0", "PROG"));
         Node head = res.getHead();
         Node[] kids = new Node[stack.size()];
+        
+        /*System.out.print("STACK: ");
+        for(int i=0;i<stack.size();i++){
+            System.out.print(stack.get(i).getHead().getInfo());
+        }*/
+
         for(int i=0;i<stack.size();i++){
             
             if(!stack.get(i).getHead().getInfo().equals(";")){
@@ -73,25 +79,13 @@ public class Parser {
                 }else if(stack.get(i).getHead().getInfo().equals("PROC_DEFS")){
                     kids[i] = stack.get(i).getHead();
                 }else{
-                    System.out.print("Error encountered during parsing, aborting.");
+                    System.out.println("Error encountered during parsing, aborting.");
                     System.exit(0);
                 }
             }
         }
         head.setChildren(kids);
         return res;
-    }
-
-    private void printNode(Node n){
-        if(n != null){
-			Node[] kids = n.getChildren();
-            if(kids[0] == null){
-			    System.out.print(" "+n.getInfo());
-            }
-			for(int i=0;i<kids.length;i++){
-				printNode(kids[i]);
-			}
-		}
     }
 
     private int reduce(String type, int ID){
@@ -164,7 +158,7 @@ public class Parser {
 
             Tree newTree = new Tree(PROC_DEFS);
             for(int i=1;i<=1;i++){
-                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+               // System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
@@ -177,7 +171,7 @@ public class Parser {
 
             Tree newTree = new Tree(PROC_DEFS);
             for(int i=1;i<=2;i++){
-                //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
+               //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
             
@@ -445,7 +439,7 @@ public class Parser {
             String s = "";
             if(stack.size()-2 >= 0){
                 s = stack.get(stack.size()-2).getHead().getInfo();
-                if((s.equals(";") || s.equals("}")) && lookAhead().getHead().getInfo().equals(";")){
+                if((s.equals(";") || s.equals("}") || s.equals("{")) && (lookAhead().getHead().getInfo().equals(";") || lookAhead().getHead().getInfo().equals("}"))){
                     type = "CALL";
                 }else if(!s.equals("proc")){
                     type = "VAR";
@@ -615,7 +609,7 @@ public class Parser {
             shifts = stack.get(stack.size()-20).getHead().getInfo()+shifts;
             shifts = stack.get(stack.size()-21).getHead().getInfo()+shifts;
             shifts = stack.get(stack.size()-22).getHead().getInfo()+shifts;
-            if(shifts.equals("for(VAR=0;VAR<VAR;VAR=add(VAR,1)){CODE}")){
+            if(shifts.equals("for(VAR=NUMBER;VAR<VAR;VAR=add(VAR,NUMBER)){CODE}")){
                 type = "COND_LOOP2";
             }
         }

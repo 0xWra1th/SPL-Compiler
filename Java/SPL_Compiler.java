@@ -24,7 +24,12 @@ public class SPL_Compiler{
 		Tree t = par.runParser(tokens);
 
 		//System.out.println("\n-----------------------------\n|  Welcome To The Compiler  |\n-----------------------------\n\n");
+		System.out.println("<center><textarea style=\"width: 500px;height:70%\">");
 		printTree(t.getHead(), 0);
+		System.out.println("</textarea></center>");
+		//System.out.println("<pre>");
+		//printTree(t.getHead(), 0);
+		//System.out.println("</pre>");
 	}
 
 	private static void printTree(Node h, int tabs){
@@ -33,7 +38,7 @@ public class SPL_Compiler{
 			for(int i=0;i<tabs;i++){
 				t = t+"  ";
 			}
-			System.out.println(t+""+h.getInfo());
+			System.out.println(""+t+""+h.getInfo());
 			Node[] kids = h.getChildren();
 			for(int i=0;i<kids.length;i++){
 				printTree(kids[i], tabs+1);
