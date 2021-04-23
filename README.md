@@ -1,8 +1,9 @@
 # SPL Compiler
 ### 1) Lexer (Complete)
   * Mark = 100%
-### 2) Parser (Current Stage)
+### 2) Parser (Needs Fixing...)
   * Parsing Method: SLR
+  * Mark = 20%
 ### 3) Type Checker
 ### 4) Intermediate Code Generator
 ### 5) Machine Code Generator
