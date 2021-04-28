@@ -24,11 +24,11 @@ public class Parser {
             String type = checkAll();
 
             //OUTPUT STACK
-            /*System.out.print(" ================================================================= STACK: ");
+            System.out.print(" ================================================================= STACK: ");
             for(int i=stack.size();i>0;i--){
                 System.out.print(""+stack.get(stack.size()-i).getHead().getInfo());
             }
-            System.out.println("");*/
+            System.out.println("");
 
             if(type.equals("")){
                 shift();
@@ -394,16 +394,15 @@ public class Parser {
             stack.add(newTree);
         }else if(type.equals("CODE5")){
             Node CODE = new Node(""+ID, "CODE");
-            //System.out.println("CHILDREN: "+stack.get(stack.size()-12).getHead().getInfo()+","+stack.get(stack.size()-10).getHead().getInfo()+","+stack.get(stack.size()-8).getHead().getInfo()+","+stack.get(stack.size()-6).getHead().getInfo()+","+stack.get(stack.size()-4).getHead().getInfo()+","+stack.get(stack.size()-2).getHead().getInfo());
-            Node[] kids = new Node[stack.get(stack.size()-1).getHead().getChildren().length+1];            
-            kids[0] = stack.get(stack.size()-3).getHead();
+            Node[] kids = new Node[stack.get(stack.size()-1).getHead().getChildren().length+1];
             for(int i=0;i<stack.get(stack.size()-1).getHead().getChildren().length;i++){
                 kids[i] = stack.get(stack.size()-1).getHead().getChildren()[i];
             }
+            kids[stack.get(stack.size()-1).getHead().getChildren().length] = stack.get(stack.size()-2).getHead();
             CODE.setChildren(kids);
 
             Tree newTree = new Tree(CODE);
-            for(int i=1;i<=3;i++){
+            for(int i=1;i<=2;i++){
                 //System.out.println("REMOVED: "+stack.get(stack.size()-1).getHead().getInfo());
                 stack.remove(stack.size()-1);
             }
@@ -507,6 +506,8 @@ public class Parser {
                 type = "BOOL1";
             }else if(shifts.equals("CODEPROC_DEFS")){
                 type = "CODE3";
+            }else if(shifts.equals("PROC_DEFSCODE")){
+                type = "CODE5";
             }
         }
 
