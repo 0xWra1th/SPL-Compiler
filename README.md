@@ -1,11 +1,13 @@
 # SPL Compiler
 ### 1) Lexer (Complete)
   * Mark = 100%
-### 2) Parser (Needs Fixing...)
+### 2) Parser (Patchy...but works)
   * Parsing Method: SLR
   * Mark = 20%
-### 3) Type Checker
-### 4) Intermediate Code Generator
-### 5) Machine Code Generator
-### 6) Register Allocator
-### 7) Assembler and Linker
+### 3) Scoper (Current)
+  * Recursively assign scope to each node
+### 4) Type Checker
+### 5) Intermediate Code Generator
+### 6) Machine Code Generator
+### 7) Register Allocator
+### 8) Assembler and Linker
