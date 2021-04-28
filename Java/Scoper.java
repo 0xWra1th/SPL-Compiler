@@ -1,15 +1,19 @@
 //Libraries
 import java.util.*;
 
+// Class that performs scoping tasks. Assigns scope to each node and stores it in the table.
 public class Scoper {
+    //Fresh table that we will populate with [id, info, scope] items.
     private ArrayList<ArrayList<String>> table = new ArrayList<ArrayList<String>>();
     private Tree tree;
 
+    //Constructor
     public Scoper(Tree t){
         this.tree = t;
         runScoper();
     }
 
+    // Begin recursive scoping method
     private void runScoper(){
         scopeNode(tree.getHead(), "0");
     }
@@ -26,6 +30,7 @@ public class Scoper {
             }
             //--------------------------------
 
+            //Add newItem to array and add that new array to the table. (Table is a 2D array. Array of Arrays.)
 			ArrayList<String> newItem = new ArrayList<String>();
             newItem.add(""+n.getID());
 			newItem.add(n.getInfo());
@@ -33,6 +38,7 @@ public class Scoper {
 			this.table.add(newItem);
 			Node[] kids = n.getChildren();
             
+            //Call the resursive function for all the children of this node.
 			for(int i=0;i<kids.length;i++){
                 scopeNode(kids[i], newScope);
 			}
@@ -40,6 +46,7 @@ public class Scoper {
 		}
     }
 
+    //Accessor method used in the main class to get the table with scopes from the scoper
     public ArrayList<ArrayList<String>> getTable(){
         return this.table;
     }
