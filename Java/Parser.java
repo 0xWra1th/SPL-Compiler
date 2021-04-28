@@ -2,9 +2,6 @@ import java.util.*;
 //import java.io.*;
 //import java.util.regex.*;
 
-import javax.print.attribute.standard.PrinterMakeAndModel;
-import javax.swing.text.DefaultStyledDocument.ElementSpec;
-
 public class Parser {
     private ArrayList<Tree> stack = new ArrayList<Tree>();
     private String[][] theTable;
