@@ -15,18 +15,19 @@ public class Scoper {
 
     // Begin recursive scoping method
     private void runScoper(){
-        scopeNode(tree.getHead(), "0");
+        scopeNode(tree.getHead(), "0", 1);
     }
 
-    private void scopeNode(Node n, String s){
+    private void scopeNode(Node n, String s, int l){
+        System.out.println("L: "+l);
         String newScope = s;
-        int lev = 1;
+        int lev = l;
         if(n != null){
             //------DETERMINE SCOPE HERE------
             if(n.getInfo().equals("COND_LOOP")){
-                newScope = newScope+"."+lev;
-            }else if(n.getInfo().equals("PROC")){
-                newScope = newScope+"."+lev;
+                newScope = newScope+"."+(lev+1);
+            }else if(n.getInfo().equals("PROC_DEFS")){
+                newScope = newScope+"."+(lev+1);
             }
             //--------------------------------
 
@@ -37,10 +38,28 @@ public class Scoper {
             newItem.add(newScope);
 			this.table.add(newItem);
 			Node[] kids = n.getChildren();
+            n.setScope(newScope);
             
             //Call the resursive function for all the children of this node.
+            int x = -1;
+            /*for(int i=0;i<kids.length;i++){
+                if(kids[i] != null){
+                    if(kids[i].getInfo().equals("COND_LOOP") || kids[i].getInfo().equals("PROC_DEFS")){
+                        x++;
+                        System.out.println("COND_LOOP OR PROC: "+x);
+                    }
+                }
+			}*/
+
+
+            
 			for(int i=0;i<kids.length;i++){
-                scopeNode(kids[i], newScope);
+                if(kids[i] != null){
+                    if(kids[i].getInfo().equals("COND_LOOP") || kids[i].getInfo().equals("PROC_DEFS")){
+                        x++;
+                    }
+                    scopeNode(kids[i], newScope, x);
+                }
 			}
 
 		}

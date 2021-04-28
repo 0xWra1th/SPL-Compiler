@@ -59,7 +59,7 @@ public class SPL_Compiler{
 			for(int i=0;i<tabs;i++){
 				t = t+"  ";
 			}
-			System.out.println(""+t+"["+h.getID()+", "+h.getInfo()+"]");
+			System.out.println(""+t+"["+h.getID()+", "+h.getInfo()+", "+h.getScope()+"]");
 			Node[] kids = h.getChildren();
 			for(int i=0;i<kids.length;i++){
 				printTree(kids[i], tabs+1);

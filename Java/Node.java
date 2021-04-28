@@ -3,6 +3,7 @@ public class Node {
     private Node[] children;
     private String ID;
     private String info;
+    private String scope;
 
     public Node(String id){
         children = new Node[50];
@@ -37,5 +38,13 @@ public class Node {
 
     public void setInfo(String i){
         this.info = i;
+    }
+
+    public String getScope(){
+        return this.scope;
+    }
+
+    public void setScope(String i){
+        this.scope = i;
     }
 }
