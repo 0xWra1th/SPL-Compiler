@@ -24,11 +24,11 @@ public class Parser {
             String type = checkAll();
 
             //OUTPUT STACK
-            System.out.print(" ================================================================= STACK: ");
+            /*System.out.print(" ================================================================= STACK: ");
             for(int i=stack.size();i>0;i--){
                 System.out.print(""+stack.get(stack.size()-i).getHead().getInfo());
             }
-            System.out.println("");
+            System.out.println("");*/
 
             if(type.equals("")){
                 shift();
