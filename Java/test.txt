@@ -1,0 +1,4 @@
+halt ; 
+proc myprocedure { callprocedure ; proc myprocedure { halt } proc myprocedure { input(variablename) } proc myprocedure { input(variablename) } } 
+proc myprocedure { input(variablename) ; proc myprocedure { callprocedure } proc myprocedure { halt } proc myprocedure { input(variablename) } } 
+proc myprocedure { input(variablename) ; proc myprocedure { input(variablename) } proc myprocedure { callprocedure } proc myprocedure { halt } }

@@ -26,22 +26,33 @@ public class SPL_Compiler{
 		Parser par = new Parser();
 		Tree t = par.runParser(tokens);
 
+		Scoper scope = new Scoper(t);
+		table = scope.getTable();
+
 		//System.out.println("\n-----------------------------\n|  Welcome To The Compiler  |\n-----------------------------\n\n");
 		System.out.println("<center><textarea style=\"width: 500px;height:70%\">");
 		printTree(t.getHead(), 0);
 		
-		System.out.println("\n      SYMBOL TABLE\n-------------------------");
+		System.out.println("\n             SYMBOL TABLE\n-----------------------------------------");
+		System.out.println("| ID\t|    INFO \t|    SCOPE\t|");
+		System.out.println("-----------------------------------------");
 		for(int i=0;i<table.size();i++){
 			for(int x=0;x<table.get(i).size();x++){
 				if(x == 0){
 					System.out.print("| "+table.get(i).get(x));
+				}else if(x == 2){
+					if(table.get(i).get(x).length() == 1){
+						System.out.print(" \t|    "+table.get(i).get(x)+"\t");
+					}else{
+						System.out.print(" \t|    "+table.get(i).get(x));
+					}
 				}else{
-					System.out.print("\t|    "+table.get(i).get(x));
+					System.out.print(" \t|    "+table.get(i).get(x));
 				}
 			}
 			System.out.print(" \t|\n");
 		}
-		System.out.println("-------------------------");
+		System.out.println("-----------------------------------------");
 
 		System.out.println("</textarea></center>");
 	}
@@ -52,11 +63,7 @@ public class SPL_Compiler{
 			for(int i=0;i<tabs;i++){
 				t = t+"  ";
 			}
-			System.out.println(""+t+""+h.getInfo());
-			ArrayList<String> newItem = new ArrayList<String>();
-			newItem.add(""+h.getID());
-			newItem.add(h.getInfo());
-			table.add(newItem);
+			System.out.println(""+t+"["+h.getID()+", "+h.getInfo()+"]");
 			Node[] kids = h.getChildren();
 			for(int i=0;i<kids.length;i++){
 				printTree(kids[i], tabs+1);
