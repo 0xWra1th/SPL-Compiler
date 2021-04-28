@@ -6,6 +6,9 @@ import java.util.*;
 
 //Main Class
 public class SPL_Compiler{
+
+	public static ArrayList<ArrayList<String>> table = new ArrayList<ArrayList<String>>();
+
 	public static void main(String[] args){
 		Lexer lex = new Lexer();
 		ArrayList<ArrayList<String>> tokens = lex.runLexer();
@@ -26,10 +29,21 @@ public class SPL_Compiler{
 		//System.out.println("\n-----------------------------\n|  Welcome To The Compiler  |\n-----------------------------\n\n");
 		System.out.println("<center><textarea style=\"width: 500px;height:70%\">");
 		printTree(t.getHead(), 0);
+		
+		System.out.println("\n      SYMBOL TABLE\n-------------------------");
+		for(int i=0;i<table.size();i++){
+			for(int x=0;x<table.get(i).size();x++){
+				if(x == 0){
+					System.out.print("| "+table.get(i).get(x));
+				}else{
+					System.out.print("\t|    "+table.get(i).get(x));
+				}
+			}
+			System.out.print(" \t|\n");
+		}
+		System.out.println("-------------------------");
+
 		System.out.println("</textarea></center>");
-		//System.out.println("<pre>");
-		//printTree(t.getHead(), 0);
-		//System.out.println("</pre>");
 	}
 
 	private static void printTree(Node h, int tabs){
@@ -39,6 +53,10 @@ public class SPL_Compiler{
 				t = t+"  ";
 			}
 			System.out.println(""+t+""+h.getInfo());
+			ArrayList<String> newItem = new ArrayList<String>();
+			newItem.add(""+h.getID());
+			newItem.add(h.getInfo());
+			table.add(newItem);
 			Node[] kids = h.getChildren();
 			for(int i=0;i<kids.length;i++){
 				printTree(kids[i], tabs+1);
