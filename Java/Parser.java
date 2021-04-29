@@ -24,11 +24,11 @@ public class Parser {
             String type = checkAll();
 
             //OUTPUT STACK
-            /*System.out.print(" ================================================================= STACK: ");
+            System.out.print(" ================================================================= STACK: ");
             for(int i=stack.size();i>0;i--){
                 System.out.print(""+stack.get(stack.size()-i).getHead().getInfo());
             }
-            System.out.println("");*/
+            System.out.println("");
 
             if(type.equals("")){
                 shift();
@@ -617,7 +617,7 @@ public class Parser {
         //RIGHT SIDE SIZE 7
         if(stack.size() >= 7){
             shifts = stack.get(stack.size()-7).getHead().getInfo()+shifts;
-            if(shifts.equals("while(BOOL){CODE}")){
+            if(shifts.equals("while(BOOL){CODE}") || shifts.equals("while(BOOL){PROG}")){
                 type = "COND_LOOP1";
             }
         }
@@ -625,7 +625,7 @@ public class Parser {
         //RIGHT SIDE SIZE 8
         if(stack.size() >= 8){
             shifts = stack.get(stack.size()-8).getHead().getInfo()+shifts;
-            if(shifts.equals("if(BOOL)then{CODE}")){
+            if(shifts.equals("if(BOOL)then{CODE}") || shifts.equals("if(BOOL)then{PROG}")){
                 try{
                     if(!lookAhead().getHead().getInfo().equals("else")){
                         type = "COND_BRANCH1";
@@ -644,7 +644,7 @@ public class Parser {
             shifts = stack.get(stack.size()-10).getHead().getInfo()+shifts;
             shifts = stack.get(stack.size()-11).getHead().getInfo()+shifts;
             shifts = stack.get(stack.size()-12).getHead().getInfo()+shifts;
-            if(shifts.equals("if(BOOL)then{CODE}else{CODE}")){
+            if(shifts.equals("if(BOOL)then{CODE}else{CODE}") || shifts.equals("if(BOOL)then{PROG}else{PROG}") || shifts.equals("if(BOOL)then{PROG}else{CODE}") || shifts.equals("if(BOOL)then{CODE}else{PROG}")){
                 type = "COND_BRANCH2";
             }
         }
@@ -661,7 +661,7 @@ public class Parser {
             shifts = stack.get(stack.size()-20).getHead().getInfo()+shifts;
             shifts = stack.get(stack.size()-21).getHead().getInfo()+shifts;
             shifts = stack.get(stack.size()-22).getHead().getInfo()+shifts;
-            if(shifts.equals("for(VAR=NUMBER;VAR<VAR;VAR=add(VAR,NUMBER)){CODE}")){
+            if(shifts.equals("for(VAR=NUMBER;VAR<VAR;VAR=add(VAR,NUMBER)){CODE}") || shifts.equals("for(VAR=NUMBER;VAR<VAR;VAR=add(VAR,NUMBER)){PROG}")){
                 type = "COND_LOOP2";
             }
         }
