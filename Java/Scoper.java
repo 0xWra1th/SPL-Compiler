@@ -23,7 +23,7 @@ public class Scoper {
         String newScope = s;
         if(n != null){
             //------DETERMINE SCOPE HERE------
-            if(n.getInfo().equals("COND_LOOP")){
+            if(n.getInfo().equals("COND_LOOP") && n.getChildren()[0].getInfo().equals("for")){
                 scope++;
                 newScope = newScope+"."+scope;
                 ArrayList<String> newItem = new ArrayList<String>();

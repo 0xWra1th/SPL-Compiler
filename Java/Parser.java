@@ -24,11 +24,11 @@ public class Parser {
             String type = checkAll();
 
             //OUTPUT STACK
-            System.out.print(" ================================================================= STACK: ");
+            /*System.out.print(" ================================================================= STACK: ");
             for(int i=stack.size();i>0;i--){
                 System.out.print(""+stack.get(stack.size()-i).getHead().getInfo());
             }
-            System.out.println("");
+            System.out.println("");*/
 
             if(type.equals("")){
                 shift();
@@ -77,8 +77,9 @@ public class Parser {
                 }else if(stack.get(i).getHead().getInfo().equals("PROC_DEFS")){
                     kids[i] = stack.get(i).getHead();
                 }else{
-                    System.out.println("Error encountered during parsing, aborting.");
-                    System.exit(0);
+                    kids[i] = stack.get(i).getHead();
+                    //System.out.println("Error encountered during parsing, aborting.");
+                    //System.exit(0);
                 }
             }
         }
@@ -471,10 +472,18 @@ public class Parser {
             String s = "";
             if(stack.size()-2 >= 0){
                 s = stack.get(stack.size()-2).getHead().getInfo();
-                if((s.equals(";") || s.equals("}") || s.equals("{")) && (lookAhead().getHead().getInfo().equals(";") || lookAhead().getHead().getInfo().equals("}"))){
-                    type = "CALL";
-                }else if(!s.equals("proc")){
-                    type = "VAR";
+                try{
+                    if((s.equals(";") || s.equals("}") || s.equals("{")) && (lookAhead().getHead().getInfo().equals(";") || lookAhead().getHead().getInfo().equals("}"))){
+                        type = "CALL";
+                    }else if(!s.equals("proc")){
+                        type = "VAR";
+                    }
+                }catch(NullPointerException e){
+                    if((s.equals(";") || s.equals("}") || s.equals("{"))){
+                        type = "CALL";
+                    }else{
+                        type = "VAR";
+                    }
                 }
             }else{
                 if((lookAhead().getHead().getInfo().equals(";") || lookAhead().getHead().getInfo().equals("}"))){
@@ -492,6 +501,10 @@ public class Parser {
                 }
             }else if(stack.size()>=5){
                 if(!stack.get(stack.size()-5).getHead().getInfo().equals("for")){
+                    type = "NUMEXPR";
+                }
+            }else if(stack.size()>=3){
+                if(stack.get(stack.size()-3).getHead().getInfo().equals("VAR") && stack.get(stack.size()-2).getHead().getInfo().equals("=")){
                     type = "NUMEXPR";
                 }
             }
