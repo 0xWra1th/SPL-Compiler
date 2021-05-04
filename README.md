@@ -4,8 +4,9 @@
 ### 2) Parser (Patchy...but works)
   * Parsing Method: SLR
   * Mark = 20%
-### 3) Scoper (Current)
+### 3) Scoper (Complete)
   * Recursively assign scope to each node
+  * Mark = 70% (30% was lost due to sketchy Parser)
 ### 4) Type Checker
 ### 5) Intermediate Code Generator
 ### 6) Machine Code Generator
