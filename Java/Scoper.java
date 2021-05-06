@@ -22,6 +22,11 @@ public class Scoper {
     private void scopeNode(Node n, String s){
         String newScope = s;
         if(n != null){
+            //--------- Replace ID's ---------
+            if(n.getInfo().equals("ID")){
+                n.setInfo(n.getInfo()+"-"+n.getExtra());
+            }
+            //--------------------------------
             //------DETERMINE SCOPE HERE------
             if(n.getInfo().equals("COND_LOOP") && n.getChildren()[0].getInfo().equals("for")){
                 scope++;

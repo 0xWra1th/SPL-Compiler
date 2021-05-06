@@ -52,6 +52,8 @@ public class Parser {
                 stack.add(stack.size(), new Tree(new Node(""+ID,list.get(tok).get(2))));
             }else if(list.get(tok).get(1).length() > 7 && list.get(tok).get(1).substring(list.get(tok).get(1).length()-7).equals("KEYWORD")){
                 stack.add(stack.size(), new Tree(new Node(""+ID,list.get(tok).get(2))));
+            }else if(list.get(tok).get(1).length() > 1 && list.get(tok).get(1).substring(list.get(tok).get(1).length()-2).equals("ID")){
+                stack.add(stack.size(), new Tree(new Node(""+ID,list.get(tok).get(1), list.get(tok).get(2))));
             }else{
                 stack.add(stack.size(), new Tree(new Node(""+ID,list.get(tok).get(1))));
             }

@@ -19,13 +19,16 @@ public class SPL_Compiler{
 		Scoper scope = new Scoper(t);
 		table = scope.getTable();
 
+		Semantics sem = new Semantics(table, t);
+		sem.runAnalysis();
+
 		// ------ OUTPUT ------
 		System.out.println("<center><textarea style=\"width: 500px;height:70%\">");
 		printTree(t.getHead(), 0);
 		
 		// *************************************** SHOULD NOT BE OUPUT IN FINAL VERSION *************************************************
 		// This is mostly Symbol Table ouput formatting. Looping through the table array and displaying each item.
-		/*System.out.println("\n             SYMBOL TABLE\n-----------------------------------------");
+		System.out.println("\n             SYMBOL TABLE\n-----------------------------------------");
 		System.out.println("| ID\t|    INFO \t|    SCOPE\t|");
 		System.out.println("-----------------------------------------");
 		for(int i=0;i<table.size();i++){
@@ -35,6 +38,8 @@ public class SPL_Compiler{
 				}else if(x == 2){
 					if(table.get(i).get(x).length() == 1){
 						System.out.print(" \t|    "+table.get(i).get(x)+"\t");
+					}else if(table.get(i).get(x-1).length() > 9){
+						System.out.print(" |    "+table.get(i).get(x));
 					}else{
 						System.out.print(" \t|    "+table.get(i).get(x));
 					}
@@ -44,7 +49,7 @@ public class SPL_Compiler{
 			}
 			System.out.print(" \t|\n");
 		}
-		System.out.println("-----------------------------------------");*/
+		System.out.println("-----------------------------------------");
 		// ******************************************************************************************************************************
 
 		System.out.println("</textarea></center>");
