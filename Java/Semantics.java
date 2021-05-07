@@ -242,7 +242,7 @@ public class Semantics {
     // --------- ERROR REPORTING FUNCTION ---------
     private void throwError(String err){
         System.out.println(err);
-        //System.exit(0);
+        System.exit(0);
     }
     // --------------------------------------------
 }
