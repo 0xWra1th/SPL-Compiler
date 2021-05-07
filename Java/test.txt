@@ -1,4 +1,12 @@
 cat = 10;
-proc cat{
-hello = 5;
+x = 5;
+cat = 6;
+y=10;
+for(x=0;x<y;x=add(x,1)){
+hello = x
+}
+y=10;
+x = 10;
+proc mat{
+hello = 5
 }
