@@ -231,21 +231,32 @@ public class Semantics {
 	        	Node[] kids = curr.getChildren();
 	        	Node[] newKids = new Node[kids.length-1];
 	        	int nkSize = 0;
-	        	if(newKids.length != 0){
-		        	for(int i=0;i<kids.length;i++){
-		        		if(kids[i] != null && !kids[i].getID().equals(ID)){
-		        			found = true;
-		        			newKids[nkSize] = kids[i];
-		        			nkSize++;
-		        		}
-		        	}
-		        	curr.setChildren(newKids);
-		        }else{
-		        	if(kids[0].getID().equals(ID)){
-	        			found = true;
-	        			curr.setChildren(newKids);
-	        		}
-		        }
+                boolean contained = false;
+
+                for(int i=0;i<kids.length;i++){
+                    if(kids[i] != null && kids[i].getID().equals(ID)){
+                        contained = true;
+                    }
+                }
+                if(contained){
+    	        	if(newKids.length != 0){
+    		        	for(int i=0;i<kids.length;i++){
+    		        		if(kids[i] != null && !kids[i].getID().equals(ID)){
+    		        			found = true;
+                                System.out.println("nk: "+newKids.length+" : "+nkSize);
+                                System.out.println("kids: "+kids.length+" : "+i);
+    		        			newKids[nkSize] = kids[i];
+    		        			nkSize++;
+    		        		}
+    		        	}
+    		        	curr.setChildren(newKids);
+    		        }else{
+    		        	if(kids[0].getID().equals(ID)){
+    	        			found = true;
+    	        			curr.setChildren(newKids);
+    	        		}
+    		        }
+                }
 	        }
 	        nodeID++;
         }
@@ -434,7 +445,7 @@ public class Semantics {
 		for(int i=0;i<table.size()*2;i++){
     		Node node = findNode(""+i, tree.getHead());
     		//System.out.println(i);
-    		if(node != null && node.getInfo().equals("COND_LOOP")){
+    		if(node != null && node.getInfo().equals("COND_LOOP") && node.getChildren()[0].getInfo().equals("for")){
     			boolean remove = false;
 
     			String v1 = node.getChildren()[1].getChildren()[0].getInfo();
@@ -475,7 +486,7 @@ public class Semantics {
 
     // --------- ERROR REPORTING FUNCTION ---------
     private void throwError(String err){
-        System.out.println(err);
+        System.out.println(err+"\n</textarea></center>");
         System.exit(0);
     }
     // --------------------------------------------
