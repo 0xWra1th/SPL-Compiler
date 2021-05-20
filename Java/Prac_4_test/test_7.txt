@@ -1,0 +1,7 @@
+a = b;
+while(eq(b,b)) { procedurecall; 
+                 for(local=0;local<local;local=add(local,1)){ i=local ; a=new }; 
+                 c=b; 
+                 for(local=0;local<local;local=add(local,1)){ o=local ; new=c }; 
+                 b=z };
+a = d

@@ -1,0 +1,8 @@
+global = alsoglobal;
+for(local=0; local<global; local=add(local,1)) 
+   { while(eq(y,y)) { local=y; 
+                      for(local=0;local<y;local=add(local,1)){ local=new ; new=y ; global=local }; 
+                      new=local; 
+                      local=global } ; 
+    local=new } ;
+y = alsoglobal

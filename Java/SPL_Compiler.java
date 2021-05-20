@@ -28,9 +28,9 @@ public class SPL_Compiler{
 		
 		// *************************************** SHOULD NOT BE OUPUT IN FINAL VERSION *************************************************
 		// This is mostly Symbol Table ouput formatting. Looping through the table array and displaying each item.
-		/*System.out.println("\n             SYMBOL TABLE\n-----------------------------------------");
+		System.out.println("\n             SYMBOL TABLE\n+---------------------------------------+");
 		System.out.println("| ID\t|    INFO \t|    SCOPE\t|");
-		System.out.println("-----------------------------------------");
+		System.out.println("+---------------------------------------+");
 		for(int i=0;i<table.size();i++){
 			for(int x=0;x<table.get(i).size();x++){
 				if(x == 0){
@@ -49,7 +49,7 @@ public class SPL_Compiler{
 			}
 			System.out.print(" \t|\n");
 		}
-		System.out.println("-----------------------------------------");*/
+		System.out.println("+---------------------------------------+");
 		// ******************************************************************************************************************************
 
 		System.out.println("</textarea></center>");

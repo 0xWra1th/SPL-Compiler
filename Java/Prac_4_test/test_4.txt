@@ -1,0 +1,6 @@
+while(eq(mult(a,97),mult(b,98))) { c=a; 
+while(eq(mult(b,97),mult(a,98))) { a=b;
+while(eq(mult(a,97),mult(a,98))) { b=c;
+while(eq(mult(c,97),mult(c,98))) { b=a;
+while(eq(mult(a,97),mult(c,98))) { a=c; someprocname } } } } } ;
+otherprocname

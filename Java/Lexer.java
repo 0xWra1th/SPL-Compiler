@@ -9,8 +9,8 @@ public class Lexer {
 		ArrayList<ArrayList<String>> tokens = new ArrayList<ArrayList<String>>();
 	    int tokSize = 0;
 	    int state = 1;
-	    File file = new File("../uploads/practical_4.txt");
-		//File file = new File("Prac_3_test/Accept_2.txt");
+	    //File file = new File("../uploads/practical_4.txt");
+		File file = new File("Prac_4_test/test_8.txt");
 		//File file = new File("test.txt");
 	    try{
 		    Scanner scan = new Scanner(file);
@@ -18,7 +18,6 @@ public class Lexer {
 		    String tok = "";
 		    int lineCount = 0;
 		    int strLen = 0;
-
 		    while(scan.hasNextLine()){
 		        lineCount++;
 		        String line = scan.nextLine()+"\n";
@@ -1218,25 +1217,18 @@ public class Lexer {
 		            }
 		        }
 			}
-
 			Integer[] NumberStates = new Integer[]{16,17};
 			List<Integer> NumberStatesList = new ArrayList<>(Arrays.asList(NumberStates));
-
 			Integer[] Control = new Integer[]{39,52,62,65,66};
 			List<Integer> ControlList = new ArrayList<>(Arrays.asList(Control));
-
 			Integer[] Grouping = new Integer[]{24,25,26,27,28,29};
 			List<Integer> GroupingList = new ArrayList<>(Arrays.asList(Grouping));
-
 			Integer[] IOKey = new Integer[]{51,60};
 			List<Integer> IOKeyList = new ArrayList<>(Arrays.asList(IOKey));
-
 			Integer[] MathKey = new Integer[]{23,55,69};
 			List<Integer> MathKeyList = new ArrayList<>(Arrays.asList(MathKey));
-
 			Integer[] BoolKey = new Integer[]{33,34,53};
 			List<Integer> BoolKeyList = new ArrayList<>(Arrays.asList(BoolKey));
-
 			if (state != 1 && state != 18){
 		        if(NumberStatesList.contains(state)){
 		            newItem = new ArrayList<String>();
@@ -1327,7 +1319,6 @@ public class Lexer {
 		}
 		return tokens;
 	}
-
 	private String LexError(String t, int lin, String s, String l){
 		if(s.equals("strLen")){
 	        return ("Lexical Error on Line "+lin+": "+t+" (String too long!)");

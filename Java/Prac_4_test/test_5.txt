@@ -1,0 +1,3 @@
+global=globaltoo ; 
+proc myprocedure   { global=c ; proc innerprocedure { global=globaltoo ; d=c } } 
+proc yourprocedure { global=c ; proc innerprocedure { global=c ; d=a ; c=globaltoo } }

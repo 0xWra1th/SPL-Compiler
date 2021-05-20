@@ -1,0 +1,49 @@
+output(a);
+if(eq(eq((b<c),
+eq(not (b<c),
+(b<c))),
+not and((b<c),
+(b<c)))) then 
+{ if(eq(eq((b<c),
+eq(not (b<c),
+(b<c))),
+not and((b<c),
+(b<c)))) then 
+{ output(a) } else { 
+if(eq(eq((b<c),
+eq(not (b<c),
+(b<c))),
+not and((b<c),
+(b<c)))) then 
+{ if(eq(eq((b<c),
+eq(not (b<c),
+(b<c))),not 
+and((b<c),
+(b<c)))) 
+then { output(a) } else 
+{ output(a) } } } } ; 
+if(eq(eq((b<c),
+eq(not (b<c),
+(b<c))),not 
+and((b<c),
+(b<c)))) then 
+{ if(eq(eq((b<c),
+eq(not (b<c),
+(b<c))),
+not and((b<c),
+(b<c)))) then 
+{ output(a) } else { 
+if(eq(eq((b<c),
+eq(not (b<c),
+(b<c))),not 
+and((b<c),
+(b<c)))) 
+then { 
+if(eq(eq((b<c),
+eq(not (b<c),
+(b<c))),
+not and((b<c),
+(b<c)))) then 
+{ output(a) } else 
+{ output(a) } } } } ;
+output(a)

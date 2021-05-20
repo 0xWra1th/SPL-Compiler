@@ -1,0 +1,8 @@
+a = b ;
+b = "string" ;
+c = a ;
+a = add(sub(d,e),a) ;
+f = 726 ;
+g = h ;
+h = b ;
+procedurecall

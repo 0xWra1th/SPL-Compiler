@@ -1,0 +1,7 @@
+call ;
+while(eq(x1,y1)) { call ; for(x2=0; x2<y1; x=add(x2,1) ){ x2="hello" } ; x1="hello" ; y1="hello" ; a=5 } ;
+call ;
+proc name { name ;
+            while(eq(x1,y1)) { name ; for(x2=0; x2<y1; x=add(x2,1) ){ x1=0 ; x2=0 } ; y1=0 } ;
+            name ;
+            proc anotherprocs { x1=0 ; z=3 ; a=7 } }
