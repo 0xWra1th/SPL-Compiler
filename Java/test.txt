@@ -1,12 +1,18 @@
-cat = 10;
-x = 5;
-cat = 6;
-y=10;
-for(x=0;x<y;x=add(x,1)){
-hello = x
-}
-y=10;
+abc;
+mat;
 x = 10;
+hat;
+cat;
 proc mat{
+for(dan=0;dan<ky;dan=add(dan,1)){
+mat;
+dan = 10;
+}
+}
+proc hat{
 hello = 5
 }
+proc cat{
+hello = 5
+}
+

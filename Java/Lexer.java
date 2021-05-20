@@ -9,8 +9,8 @@ public class Lexer {
 		ArrayList<ArrayList<String>> tokens = new ArrayList<ArrayList<String>>();
 	    int tokSize = 0;
 	    int state = 1;
-	    //File file = new File("../uploads/practical_4.txt");
-		File file = new File("Prac_4_test/test_8.txt");
+	    File file = new File("../uploads/practical_5.txt");
+		//File file = new File("Prac_4_test/test_8.txt");
 		//File file = new File("test.txt");
 	    try{
 		    Scanner scan = new Scanner(file);

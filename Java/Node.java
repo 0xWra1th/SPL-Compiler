@@ -24,6 +24,8 @@ public class Node {
         extra = ex;
     }
 
+    public Node(){}
+
     public Node[] getChildren(){
         return this.children;
     }
