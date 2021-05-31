@@ -10,4 +10,4 @@
 ### 4 - 5) Semantic Analysis (Complete)
   * This phase will be completed in multiple steps
   * Mark = 80% and 60% (Idk what happened...)
-### 6) Type Checking (Current)
+### 6) Type Inference (Current)
